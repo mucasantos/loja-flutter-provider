@@ -50,12 +50,18 @@ class ProductItem extends StatelessWidget {
           title: Text(
             title,
             textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (ctx) => ProductDetailsScreen()));
+            Navigator.of(context).pushNamed(
+              ProductDetailsScreen.routeName,
+              arguments: id,
+            );
           },
           child: Image.network(
             imageUrl,
