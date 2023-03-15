@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'E-Shop',
       theme: ThemeData(
         primarySwatch: MaterialColor(0xffFC6828, color),
+        fontFamily: 'Lato',
       ),
       home: ProductsOverviewScreen(),
     );

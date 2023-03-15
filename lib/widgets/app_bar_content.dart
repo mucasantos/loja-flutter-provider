@@ -13,8 +13,12 @@ class AppBarContent extends StatelessWidget {
           child: Row(
             children: <Widget>[
               const Text(
-                'PreferredSize Sample',
-                style: TextStyle(color: Colors.white),
+                'Shop App',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const Spacer(),
               IconButton(
