@@ -1,6 +1,8 @@
 import 'package:appshop2023/main_color.dart';
 import 'package:appshop2023/product_detail_screen.dart';
+import 'package:appshop2023/providers/products_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
   final String id;
@@ -16,6 +18,8 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productData = Provider.of<Products>(context);
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: GridTile(
@@ -37,10 +41,13 @@ class ProductItem extends StatelessWidget {
                       Radius.circular(30),
                     )),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    productData.toggleFavorite(id);
+                  },
                   icon: Icon(
                     Icons.favorite,
-                    color: color[800],
+                    color:
+                        productData.isFavorite(id) ? color[800] : Colors.black,
                   ),
                 ),
               ),

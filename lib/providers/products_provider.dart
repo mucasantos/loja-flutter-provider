@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:appshop2023/model/product.dart';
 import 'package:flutter/material.dart';
 
@@ -53,9 +55,25 @@ class Products with ChangeNotifier {
     ),
   ];
 
+  List<String> _favorites = [];
   List<Product> get items => [..._items];
+  List<String> get favorites => [..._favorites];
 
   Product findById(String id) {
-    return items.firstWhere((element) => element.id == id);
+    return _items.firstWhere((element) => element.id == id);
+  }
+
+  bool isFavorite(String id) {
+    return _items.firstWhere((element) => element.id == id).isFavorite;
+  }
+
+  toggleFavorite(String id) {
+    var element = _items.firstWhere((element) => element.id == id);
+    if (element.isFavorite == true) {
+      element.isFavorite = false;
+    } else {
+      element.isFavorite = true;
+    }
+    notifyListeners();
   }
 }
