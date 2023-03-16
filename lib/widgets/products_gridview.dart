@@ -21,13 +21,13 @@ class ProductsGridView extends StatelessWidget {
         ),
         itemBuilder: (ctx, i) {
           final product = productData.items;
-          return ChangeNotifierProvider<Product>(
-            create: (context) => product[i],
+          return ChangeNotifierProvider.value(
+            value: product[i],
             child: ProductItem(
-             // id: product[i].id,
-            //  imageUrl: product[i].imageUrl,
-            //  title: product[i].title,
-            ),
+                // id: product[i].id,
+                //  imageUrl: product[i].imageUrl,
+                //  title: product[i].title,
+                ),
           );
         });
   }

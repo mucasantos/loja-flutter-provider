@@ -55,9 +55,9 @@ class Products with ChangeNotifier {
     ),
   ];
 
-  List<String> _favorites = [];
+//  List<String> _favorites = [];
   List<Product> get items => [..._items];
-  List<String> get favorites => [..._favorites];
+  //List<String> get favorites => [..._favorites];
 
   Product findById(String id) {
     return _items.firstWhere((element) => element.id == id);
