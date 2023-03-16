@@ -62,7 +62,7 @@ class Products with ChangeNotifier {
   Product findById(String id) {
     return _items.firstWhere((element) => element.id == id);
   }
-
+/*
   bool isFavorite(String id) {
     return _items.firstWhere((element) => element.id == id).isFavorite;
   }
@@ -75,5 +75,5 @@ class Products with ChangeNotifier {
       element.isFavorite = true;
     }
     notifyListeners();
-  }
+  }*/
 }

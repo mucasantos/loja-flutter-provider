@@ -1,10 +1,12 @@
 import 'package:appshop2023/main_color.dart';
+import 'package:appshop2023/model/product.dart';
 import 'package:appshop2023/product_detail_screen.dart';
 import 'package:appshop2023/providers/products_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
+  /*
   final String id;
   final String title;
   final String imageUrl;
@@ -15,10 +17,10 @@ class ProductItem extends StatelessWidget {
     required this.imageUrl,
     required this.title,
   }) : super(key: key);
-
+*/
   @override
   Widget build(BuildContext context) {
-    final productData = Provider.of<Products>(context);
+    final product = Provider.of<Product>(context);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
@@ -32,7 +34,7 @@ class ProductItem extends StatelessWidget {
               ),
               child: Container(
                 decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.black54,
                     //   border: Border.all(
                     //       color: const Color(
                     //     0xffFC6828,
@@ -41,13 +43,10 @@ class ProductItem extends StatelessWidget {
                       Radius.circular(30),
                     )),
                 child: IconButton(
-                  onPressed: () {
-                    productData.toggleFavorite(id);
-                  },
+                  onPressed: product.toggleFavoriteStatus,
                   icon: Icon(
-                    Icons.favorite,
-                    color:
-                        productData.isFavorite(id) ? color[800] : Colors.black,
+                    product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: color[800],
                   ),
                 ),
               ),
@@ -55,7 +54,7 @@ class ProductItem extends StatelessWidget {
         footer: GridTileBar(
           backgroundColor: Colors.black87,
           title: Text(
-            title,
+            product.title,
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 16,
@@ -67,11 +66,11 @@ class ProductItem extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed(
               ProductDetailsScreen.routeName,
-              arguments: id,
+              arguments: product.id,
             );
           },
           child: Image.network(
-            imageUrl,
+            product.imageUrl,
             fit: BoxFit.cover,
           ),
         ),

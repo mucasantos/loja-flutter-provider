@@ -1,3 +1,4 @@
+import 'package:appshop2023/model/product.dart';
 import 'package:appshop2023/providers/products_provider.dart';
 import 'package:appshop2023/widgets/product_item.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,13 @@ class ProductsGridView extends StatelessWidget {
         ),
         itemBuilder: (ctx, i) {
           final product = productData.items;
-          return ProductItem(
-            id: product[i].id,
-            imageUrl: product[i].imageUrl,
-            title: product[i].title,
+          return ChangeNotifierProvider<Product>(
+            create: (context) => product[i],
+            child: ProductItem(
+             // id: product[i].id,
+            //  imageUrl: product[i].imageUrl,
+            //  title: product[i].title,
+            ),
           );
         });
   }
